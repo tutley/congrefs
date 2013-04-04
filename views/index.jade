@@ -1,0 +1,76 @@
+!!!
+html
+    head
+        title= title
+        link(rel='stylesheet', href='//netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/css/bootstrap-combined.min.css')
+        link(rel='stylesheet', href='css/style.css')
+        script(src='//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js')
+        script(src='//netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/js/bootstrap.min.js')
+
+    body(style='padding-top: 0px;')
+        div.container-fluid
+            div.row
+                div.span9
+                    div.page-header
+                        h1 Congrefs
+                        h1
+                            small Of the People
+                div.span3
+                    ul.pull-right.breadcrumb
+                        li
+                            a(href='/login') Login
+                            span.divider /
+                        li
+                            a(href='/register') Register
+
+
+            block noNavBody
+                div.row
+                    div.span2
+                        |&nbsp;
+                    div.span8.well
+                        h3
+                            span.label.label-info Info
+                                |&nbsp;
+                            |&nbsp;
+                            a(href='#') How it works:
+                            center
+                                | <iframe width="480" height="360" src="http://www.youtube.com/embed/tO5sxLapAts" frameborder="0" allowfullscreen></iframe>
+                            ul
+                                li Phase 1: Collect Underpants
+                                li Phase 2: ???
+                                li Phase 3: Profit!!
+                            a.btn.btn-primary.btn-large(href='/register') Sign Up Now!
+                    div.span2
+                            |&nbsp;
+
+                div.row
+                    div.span1
+                        |&nbsp;
+                    div.span3
+                        ul.thumbnails
+                            li.span3
+                                a.thumbnail(href='plans')
+                                    center
+                                        h1 Plans and Pricing
+                                    //- img(src='http://placehold.it/260x180', alt='placeholder')
+                    div.span1
+                        |&nbsp;
+                    div.span3
+                        ul.thumbnails
+                            li.span3
+                                a.thumbnail(href='/about')
+                                    center
+                                        h1 About Us
+                                    //- img(src='http://placehold.it/260x180', alt='placeholder')
+                    div.span1
+                        |&nbsp;
+                    div.span3
+                        ul.thumbnails
+                            li.span3
+                                a.thumbnail(href='/tos')
+                                    center
+                                        h1 Terms of Service
+                                    //- img(src='http://placehold.it/260x180', alt='placeholder')
+
+
