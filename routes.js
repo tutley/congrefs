@@ -26,5 +26,8 @@ module.exports =  function(app){
 
    app.get('/',   top.index);
 
+   // Janrain Login Post
+   app.post('/rpx', top.rpx);
+
 
 };

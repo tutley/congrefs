@@ -3,10 +3,15 @@
 var express = require('express')
    , routes = require('./routes')
    , mongoose = require('mongoose')
-   , mongo = require('mongodb');
+   , mongo = require('mongodb')
+   , janrain = require('janrain-api')
+   , passport = require('passport');
 
 var app = module.exports = express();
 global.app = app;
+
+// Load Passport methods
+var PP = require('./auth.js');
 
 // Connect to the database once
 var DB = require('./database');
@@ -29,6 +34,8 @@ app.configure(function(){
       store: new mongoStore({db : db})
    }));
 */
+   app.use(passport.initialize());
+   app.use(passport.session());
    app.use(app.router);
    app.use(express.static(__dirname + '/public'));
 });

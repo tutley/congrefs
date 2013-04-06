@@ -6,6 +6,33 @@ html
         link(rel='stylesheet', href='css/style.css')
         script(src='//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js')
         script(src='//netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/js/bootstrap.min.js')
+        script(type='text/javascript').
+            (function() {
+                if (typeof window.janrain !== 'object') window.janrain = {};
+                if (typeof window.janrain.settings !== 'object') window.janrain.settings = {};
+                
+                janrain.settings.tokenUrl = 'http://congrefs.com/rpx';
+
+                function isReady() { janrain.ready = true; };
+                if (document.addEventListener) {
+                  document.addEventListener("DOMContentLoaded", isReady, false);
+                } else {
+                  window.attachEvent('onload', isReady);
+                }
+
+                var e = document.createElement('script');
+                e.type = 'text/javascript';
+                e.id = 'janrainAuthWidget';
+
+                if (document.location.protocol === 'https:') {
+                  e.src = 'https://rpxnow.com/js/lib/congrefs/engage.js';
+                } else {
+                  e.src = 'http://widget-cdn.rpxnow.com/js/lib/congrefs/engage.js';
+                }
+
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(e, s);
+            })();
 
     body(style='padding-top: 0px;')
         div.container-fluid
@@ -29,18 +56,7 @@ html
                     div.span2
                         |&nbsp;
                     div.span8.well
-                        h3
-                            span.label.label-info Info
-                                |&nbsp;
-                            |&nbsp;
-                            a(href='#') How it works:
-                            center
-                                | <iframe width="480" height="360" src="http://www.youtube.com/embed/tO5sxLapAts" frameborder="0" allowfullscreen></iframe>
-                            ul
-                                li Phase 1: Collect Underpants
-                                li Phase 2: ???
-                                li Phase 3: Profit!!
-                            a.btn.btn-primary.btn-large(href='/register') Sign Up Now!
+                        div(id='janrainEngageEmbed')
                     div.span2
                             |&nbsp;
 
@@ -72,5 +88,15 @@ html
                                     center
                                         h1 Terms of Service
                                     //- img(src='http://placehold.it/260x180', alt='placeholder')
+
+
+                div.row
+                    div.span1
+                        |&nbsp;
+                    div.span10
+                        | If you like this project and wish to donate, bitcoin me: 1NC1af4v3KRzBMQCsaVQsQLSybryY8fww5
+                    div.span1
+                        |&nbsp;
+
 
 
