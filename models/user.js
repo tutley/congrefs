@@ -12,8 +12,6 @@ This also includes the following references:
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
-var passport = require("passport");
-var bcrypt = require("bcrypt");
 
 var UserSchema = new Schema({
    name: {
@@ -42,19 +40,8 @@ var UserSchema = new Schema({
    collection: "users"
 });
 
-UserSchema.virtual("password").get(function() {
-   return this._password;
-}).set(function(password) {
-   var salt;
-   this._password = password;
-   salt = this.salt = bcrypt.genSaltSync(10);
-   return this.hash = bcrypt.hashSync(password, salt);
-});
 
-UserSchema.method("verifyPassword", function(password, callback) {
-   return bcrypt.compare(password, this.hash, callback);
-});
-
+/*
 UserSchema.static("authenticate", function(email, password, callback) {
    return this.findOne({ email: email }, function(err, user) {
       if (err) {
@@ -78,5 +65,6 @@ UserSchema.static("authenticate", function(email, password, callback) {
       });
    });
 });
+*/
 
 module.exports = mongoose.model("User", UserSchema);

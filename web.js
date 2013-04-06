@@ -10,9 +10,6 @@ var express = require('express')
 var app = module.exports = express();
 global.app = app;
 
-// Load Passport methods
-var PP = require('./auth.js');
-
 // Connect to the database once
 var DB = require('./database');
 var mongoUri = process.env.MONGOLAB_URI || 
@@ -34,8 +31,6 @@ app.configure(function(){
       store: new mongoStore({db : db})
    }));
 */
-   app.use(passport.initialize());
-   app.use(passport.session());
    app.use(app.router);
    app.use(express.static(__dirname + '/public'));
 });
