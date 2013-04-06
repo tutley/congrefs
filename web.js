@@ -4,8 +4,7 @@ var express = require('express')
    , routes = require('./routes')
    , mongoose = require('mongoose')
    , mongo = require('mongodb')
-   , janrain = require('janrain-api')
-   , passport = require('passport');
+   , janrain = require('janrain-api');
 
 var app = module.exports = express();
 global.app = app;
