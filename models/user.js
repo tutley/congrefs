@@ -24,6 +24,32 @@ var UserSchema = new Schema({
          required: true
       }
    },
+   displayName: String,
+   socialProfiles: [{
+      providerName: String,
+      identifier: String,
+      preferredUsername: String,
+      verifiedEmail: String,
+      email: String,
+      displayName: String,
+      name: { 
+         formatted: String,
+         givenName: String,
+         familyName: String 
+      },
+      url: String,
+      photo: String,
+      utcOffset: String,
+      address: { 
+         formatted: String 
+      },
+      googleUserId: String,
+      gender: String,
+      birthday: String,
+      phone: String
+   }],
+   state: String,
+   district: String,
    email: {
       type: String,
       unique: true

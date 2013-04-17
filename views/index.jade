@@ -1,102 +1,107 @@
 !!!
 html
-    head
-        title= title
-        link(rel='stylesheet', href='//netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/css/bootstrap-combined.min.css')
-        link(rel='stylesheet', href='css/style.css')
-        script(src='//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js')
-        script(src='//netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/js/bootstrap.min.js')
-        script(type='text/javascript').
+   head
+      title= title
+      link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootswatch/2.3.1/slate/bootstrap.min.css')
+      link(rel='stylesheet', href='css/style.css')
+
+      meta(name='viewport', content='width=device-width, initial-scale=1.0')
+
+   body
+      div#wrap
+         div.navbar.navbar-fixed-top
+            div.navbar-inner
+               .container
+                  button.btn.btn-navbar(type='button', data-toggle='collapse', data-target='.nav-collapse')
+                     span.icon-bar
+                     span.icon-bar
+                     span.icon-bar
+                  a.brand(href='#') Project name
+                  .nav-collapse.collapse
+                     ul.nav
+                        li.active
+                           a(href='#') Home
+                        li
+                           a(href='#about') About
+                        li
+                           a(href='#contact') Contact
+                        li.dropdown
+                           a.dropdown-toggle(href='#', data-toggle='dropdown')
+                              | Dropdown
+                              b.caret
+                           ul.dropdown-menu
+                              li
+                                 a(href='#') Action
+                              li
+                                 a(href='#') Another action
+                              li
+                                 a(href='#') Something else here
+                              li.divider
+                              li.nav-header Nav header
+                              li
+                                 a(href='#') Separated link
+                              li
+                                 a(href='#') One more separated link
+               
+         div.container
+            div.page-header
+               h1 Congrefs&nbsp;
+                  small Of the People
+
+            block afterNav
+               div.row-fluid
+                  div.span2
+                     |&nbsp;
+                  div.span8.well
+                     div(id='janrainEngageEmbed')
+                  div.span2
+                     |&nbsp;
+
+
+               div.row-fluid
+                  div.span1
+                     |&nbsp;
+                  div.span10
+                     | If you like this project and wish to donate, bitcoin me: 1NC1af4v3KRzBMQCsaVQsQLSybryY8fww5
+                  div.span1
+                     |&nbsp;
+
+               div#push
+            
+      div#footer
+         .container
+            p.muted.credit This will be filled in eventually
+
+
+      script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+      script(src='//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js')
+      block pageScripts
+         script(type='text/javascript').
             (function() {
-                if (typeof window.janrain !== 'object') window.janrain = {};
-                if (typeof window.janrain.settings !== 'object') window.janrain.settings = {};
-                
-                janrain.settings.tokenUrl = 'http://congrefs.com/rpx';
+               if (typeof window.janrain !== 'object') window.janrain = {};
+               if (typeof window.janrain.settings !== 'object') window.janrain.settings = {};
+                    
+               janrain.settings.tokenUrl = '#{tokenUrl}';
 
-                function isReady() { janrain.ready = true; };
-                if (document.addEventListener) {
+               function isReady() { janrain.ready = true; };
+               if (document.addEventListener) {
                   document.addEventListener("DOMContentLoaded", isReady, false);
-                } else {
+               } else {
                   window.attachEvent('onload', isReady);
-                }
+               }
 
-                var e = document.createElement('script');
-                e.type = 'text/javascript';
-                e.id = 'janrainAuthWidget';
+               var e = document.createElement('script');
+               e.type = 'text/javascript';
+               e.id = 'janrainAuthWidget';
 
-                if (document.location.protocol === 'https:') {
+               if (document.location.protocol === 'https:') {
                   e.src = 'https://rpxnow.com/js/lib/congrefs/engage.js';
-                } else {
+               } else {
                   e.src = 'http://widget-cdn.rpxnow.com/js/lib/congrefs/engage.js';
-                }
+               }
 
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(e, s);
+               var s = document.getElementsByTagName('script')[0];
+               s.parentNode.insertBefore(e, s);
             })();
-
-    body(style='padding-top: 0px;')
-        div.container-fluid
-            div.row
-                div.span9
-                    div.page-header
-                        h1 Congrefs
-                        h1
-                            small Of the People
-                div.span3
-                    ul.pull-right.breadcrumb
-                        li
-                            a(href='/login') Login
-                            span.divider /
-                        li
-                            a(href='/register') Register
-
-
-            block noNavBody
-                div.row
-                    div.span2
-                        |&nbsp;
-                    div.span8.well
-                        div(id='janrainEngageEmbed')
-                    div.span2
-                            |&nbsp;
-
-                div.row
-                    div.span1
-                        |&nbsp;
-                    div.span3
-                        ul.thumbnails
-                            li.span3
-                                a.thumbnail(href='plans')
-                                    center
-                                        h1 Plans and Pricing
-                                    //- img(src='http://placehold.it/260x180', alt='placeholder')
-                    div.span1
-                        |&nbsp;
-                    div.span3
-                        ul.thumbnails
-                            li.span3
-                                a.thumbnail(href='/about')
-                                    center
-                                        h1 About Us
-                                    //- img(src='http://placehold.it/260x180', alt='placeholder')
-                    div.span1
-                        |&nbsp;
-                    div.span3
-                        ul.thumbnails
-                            li.span3
-                                a.thumbnail(href='/tos')
-                                    center
-                                        h1 Terms of Service
-                                    //- img(src='http://placehold.it/260x180', alt='placeholder')
-
-
-                div.row
-                    div.span1
-                        |&nbsp;
-                    div.span10
-                        | If you like this project and wish to donate, bitcoin me: 1NC1af4v3KRzBMQCsaVQsQLSybryY8fww5
-                    div.span1
-                        |&nbsp;
-
 
 
