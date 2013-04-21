@@ -21,22 +21,26 @@ module.exports = {
 
    // app.get('/'...)
    index: function(req, res) {
-
       res.render('index.jade', {
          title: 'Congrefs'
-         , currentUser: req.user
+         , user: req.session.user
          , loggedIn: loggedIn(req.session.user)
          , tokenUrl : 'http://'+req.get('host')+'/rpx'
       });
-      console.log('Req User');
-      console.log(req.user);
    },
 
    // app.get('/login', top.login);
    login: function(req, res) {
       res.render('login.jade', {
          title: 'Congrefs Login'
+         , tokenUrl : 'http://'+req.get('host')+'/rpx'
       });
+   },
+
+   // app.get('/loogout', top.logout);
+   logout: function(req, res) {
+      delete req.session;
+      res.redirect('/');
    },
 
    // app.get('/tos'...)
@@ -87,9 +91,8 @@ module.exports = {
          *     b) Upon completion, populate req.session.user and redirect to '/'
          *  5) If email doesn't already exist, add new user
          *     a) grab email from email entry page or data profile
-         *     b) explain that voting is not allowed until they enter their full zip code information
-         *     c) Either take them to zip entry/discovery or take them to profile page (including annoying
-         *           warning message about zip code/voting district)
+         *     b) display new account page
+         *     c) display full zip code entry/lookup form and explain why
          */
 
          req.session.rpx = data.profile;

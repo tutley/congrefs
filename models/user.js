@@ -14,16 +14,6 @@ var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
 
 var UserSchema = new Schema({
-   name: {
-      first: {
-         type: String,
-         required: true
-      },
-      last: {
-         type: String,
-         required: true
-      }
-   },
    displayName: String,
    socialProfiles: [{
       providerName: String,
@@ -53,14 +43,6 @@ var UserSchema = new Schema({
    email: {
       type: String,
       unique: true
-   },
-   salt: {
-      type: String,
-      required: true
-   },
-   hash: {
-      type: String,
-      required: true
    }
 }, {
    collection: "users"

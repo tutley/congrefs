@@ -18,10 +18,16 @@ var mongoUri = process.env.MONGOLAB_URI ||
   'mongodb://localhost/congrefs'; 
 var db = new DB.startup(mongoUri);
 
+app.locals.links = require('./navigation');
+
 // App Config
 app.configure(function(){
    app.set('views', __dirname + '/views');
    app.set('view engine', 'jade');
+   app.use(function(req, res, next) {
+     res.locals.current = req.path;
+     next();
+  });
    app.use(express.bodyParser());
    app.use(express.cookieParser());
    app.use(express.methodOverride());

@@ -26,10 +26,10 @@ module.exports =  function(app){
     */
    app.get('/',   top.index);
    app.get('/login', top.login);
+   app.get('/logout', top.logout);
 
    // Janrain Login Post
    app.post('/rpx', top.rpx);
-
 
 
    /**
@@ -40,7 +40,5 @@ module.exports =  function(app){
    app.get('/register/merge', user.merge);
    app.post('/register/merge', user.mergePost);   
    app.get('/register/new', user.newUser);
-   app.post('/register/new', user.newUserPost);
-
 
 };

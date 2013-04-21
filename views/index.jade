@@ -2,58 +2,65 @@
 html
    head
       title= title
-      link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootswatch/2.3.1/slate/bootstrap.min.css')
-      link(rel='stylesheet', href='css/style.css')
+      link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootswatch/2.3.1/cerulean/bootstrap.min.css')
+      link(rel='stylesheet', href='//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css')
+      link(rel='stylesheet', href='/css/style.css')
 
       meta(name='viewport', content='width=device-width, initial-scale=1.0')
-
+      meta(name='title', content='#{title}')
+      block metas
+         meta(name='description', content='Congrefs.com, where we the people have a say!')
    body
       div#wrap
          div.navbar.navbar-fixed-top
             div.navbar-inner
-               .container
+               div.container-fluid
                   button.btn.btn-navbar(type='button', data-toggle='collapse', data-target='.nav-collapse')
                      span.icon-bar
                      span.icon-bar
                      span.icon-bar
-                  a.brand(href='#') Project name
-                  .nav-collapse.collapse
-                     ul.nav
-                        li.active
-                           a(href='#') Home
-                        li
-                           a(href='#about') About
-                        li
-                           a(href='#contact') Contact
-                        li.dropdown
-                           a.dropdown-toggle(href='#', data-toggle='dropdown')
-                              | Dropdown
-                              b.caret
-                           ul.dropdown-menu
-                              li
-                                 a(href='#') Action
-                              li
-                                 a(href='#') Another action
-                              li
-                                 a(href='#') Something else here
-                              li.divider
-                              li.nav-header Nav header
-                              li
-                                 a(href='#') Separated link
-                              li
-                                 a(href='#') One more separated link
-               
-         div.container
-            div.page-header
-               h1 Congrefs&nbsp;
-                  small Of the People
+                  div.pull-right
+                     a.brand(href='/') Congrefs
+                  ul.nav
+                     - var accountActive = (current.substr(0, 8) == '/account' ? 'active' : '')
+                     li.dropdown(class = '#{accountActive}')
+                        a.dropdown-toggle(href='#', data-toggle='dropdown')
+                           | My Account
+                           b.caret
+                        ul.dropdown-menu
+                           li
+                              a(href='/account/view') View/Edit Profile
+                           li
+                              a(href='/account/votes') My Votes
+                           li
+                              a(href='/account/comments') My Comments
 
+                  div.nav-collapse.collapse
+                     ul.nav
+                        each link in links
+                           - var isActive = (link.path == current ? 'active' : '')
+                           li(class = '#{isActive}')
+                              a(href='#{link.path}')= link.label
+                  ///.nav-collapse
+                        
+         div.container-fluid  
+            div.page-header
+               h2= title    
             block afterNav
                div.row-fluid
                   div.span2
                      |&nbsp;
                   div.span8.well
-                     div(id='janrainEngageEmbed')
+                     if user
+                        p Welcome back, #{user.displayName}
+                        p
+                           a(href='/logout') Log Out
+                     else
+                        p Welcome to Congrefs, &nbsp;
+                           a(href='#loginModal'
+                              role='button' 
+                              data-toggle='modal') click here to login!
+                        
                   div.span2
                      |&nbsp;
 
@@ -62,15 +69,38 @@ html
                   div.span1
                      |&nbsp;
                   div.span10
-                     | If you like this project and wish to donate, bitcoin me: 1NC1af4v3KRzBMQCsaVQsQLSybryY8fww5
+                     p If you like this project and wish to donate, bitcoin me: 1NC1af4v3KRzBMQCsaVQsQLSybryY8fww5
                   div.span1
                      |&nbsp;
 
                div#push
-            
+      
+      // - modals and other hidden things
+      block loginmodal
+         div.modal.hide.fade(
+            id='loginModal'
+            tabindex='-1'
+            role='dialog'
+            aria-labelledby='ModalLabel'
+            aria-hidden='true')
+            div.modal-header
+               button.close(
+                  type='button'
+                  data-dismiss='modal'
+                  aria-hidden='true')
+                  |x
+               h3(id='ModalLabel') Login/Register
+            div.modal-body
+               div(id='janrainEngageEmbed')
+            div.modal-footer
+               button.btn(
+                  data-dismiss='modal'
+                  aria-hidden='true') Cancel
+
+
       div#footer
-         .container
-            p.muted.credit This will be filled in eventually
+         .container-fluid
+            p.credit This will be filled in eventually
 
 
       script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')

@@ -21,16 +21,17 @@ body {
    height: auto !important;
    height: 100%;
    /* Negative indent footer by it's height */
-   margin: 0 auto -60px;
+   margin: 0 auto -30px;
 }
 
 /* Set the fixed height of the footer here */
 #push,
 #footer {
-   height: 60px;
+   height: 30px;
 }
 #footer {
-   background-color: #3a3f44;
+   color: #ffffff;
+   background-color: #45aeea;
 }
 
 /* Lastly, apply responsive CSS fixes as necessary */
@@ -43,12 +44,14 @@ body {
    }
 }
 
-#wrap > .container {
+#wrap > .container-fluid {
   padding-top: 40px;
 }
-.container .credit {
-  margin: 20px 0;
+.container-fluid .credit {
+  margin: 10px 0;
 }
+
+
 
 code {
   font-size: 80%;
