@@ -45,13 +45,11 @@ body {
 }
 
 #wrap > .container-fluid {
-  padding-top: 40px;
+  padding-top: 52px;
 }
 .container-fluid .credit {
   margin: 10px 0;
 }
-
-
 
 code {
   font-size: 80%;

@@ -43,6 +43,21 @@ module.exports = {
       res.redirect('/');
    },
 
+   // app.get('/new')
+   newest: function(req, res, next) {
+      res.end('Under Construction');
+   },
+   
+   // app.get('/top')
+   top: function(req, res, next) {
+      res.end('Under Construction');
+   },
+   
+   // app.get('/add')
+   add: function(req, res, next) {
+      res.end('Under Construction');
+   },
+   
    // app.get('/tos'...)
    tos: function(req, res) {
       res.render('tos.jade', {

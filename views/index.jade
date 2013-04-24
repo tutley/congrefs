@@ -22,18 +22,26 @@ html
                   div.pull-right
                      a.brand(href='/') Congrefs
                   ul.nav
-                     - var accountActive = (current.substr(0, 8) == '/account' ? 'active' : '')
-                     li.dropdown(class = '#{accountActive}')
-                        a.dropdown-toggle(href='#', data-toggle='dropdown')
-                           | My Account
-                           b.caret
-                        ul.dropdown-menu
-                           li
-                              a(href='/account/view') View/Edit Profile
-                           li
-                              a(href='/account/votes') My Votes
-                           li
-                              a(href='/account/comments') My Comments
+                     if user
+                        - var accountActive = (current.substr(0, 8) == '/account' ? 'active' : '')
+                        li.dropdown(class = '#{accountActive}')
+                           a.dropdown-toggle(href='#', data-toggle='dropdown')
+                              | My Account
+                              b.caret
+                           ul.dropdown-menu
+                              li
+                                 a(href='/account/view') View/Edit Profile
+                              li
+                                 a(href='/account/votes') My Votes
+                              li
+                                 a(href='/account/comments') My Comments
+                     else
+                        li.dropdown
+                           a.dropdown-toggle(
+                              href='#loginModal'
+                              role='button'
+                              data-toggle='modal') My Account
+                              b.caret
 
                   div.nav-collapse.collapse
                      ul.nav
@@ -43,10 +51,9 @@ html
                               a(href='#{link.path}')= link.label
                   ///.nav-collapse
                         
-         div.container-fluid  
-            div.page-header
-               h2= title    
+         div.container-fluid   
             block afterNav
+               h3 Welcome to Congrefs!
                div.row-fluid
                   div.span2
                      |&nbsp;
@@ -56,27 +63,17 @@ html
                         p
                            a(href='/logout') Log Out
                      else
-                        p Welcome to Congrefs, &nbsp;
-                           a(href='#loginModal'
+                        a(href='#loginModal'
                               role='button' 
-                              data-toggle='modal') click here to login!
-                        
+                              data-toggle='modal') Login or Register!   
                   div.span2
                      |&nbsp;
 
 
-               div.row-fluid
-                  div.span1
-                     |&nbsp;
-                  div.span10
-                     p If you like this project and wish to donate, bitcoin me: 1NC1af4v3KRzBMQCsaVQsQLSybryY8fww5
-                  div.span1
-                     |&nbsp;
-
                div#push
       
-      // - modals and other hidden things
-      block loginmodal
+      //- modals and other hidden things
+      block modals
          div.modal.hide.fade(
             id='loginModal'
             tabindex='-1'
@@ -91,7 +88,9 @@ html
                   |x
                h3(id='ModalLabel') Login/Register
             div.modal-body
+               div.span1
                div(id='janrainEngageEmbed')
+               div.span1
             div.modal-footer
                button.btn(
                   data-dismiss='modal'
@@ -100,7 +99,7 @@ html
 
       div#footer
          .container-fluid
-            p.credit This will be filled in eventually
+            p.credit If you like this project and wish to donate, bitcoin me: 1NC1af4v3KRzBMQCsaVQsQLSybryY8fww5
 
 
       script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
