@@ -66,7 +66,12 @@ module.exports = {
    
    // app.post('/register/merge', top.mergePost);   
    mergePost: function(req, res, next) {
-
+      User.update( {'_id': req.body['uid'] }, 
+         { $push : { 'socialProfiles' : req.session.rpx } }, 
+         function(err) {
+         if (err) {next(err);}
+         res.redirect('/account/view');
+      });
    },
 
    // app.get('/register/new')

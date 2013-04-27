@@ -1,7 +1,32 @@
 extends index
 
 block afterNav
-   p This will be the merge accounts page 
+   h3 Merge Congrefs Accounts
+   p We found an account in the system with your email address:
+   div.span12
+      div.well.span4
+         h4= user.displayName
+         div.pull-right
+            img(src='#{user.socialProfiles[0].photo}', border='0')
+         div
+            each profile in user.socialProfiles
+               a(
+                  href='#{profile.url}'
+                  target='_new'
+                  title='#{profile.providerName} Profile')
+                  img(border='0', src='/img/#{profile.providerName}_32.png')
+   div.span12
+      div.span3
+         a.btn('href='/logout') This isn't me
+      div.span1
+         form(action='/register/merge', method='post')
+            input(
+               type='hidden'
+               name='uid'
+               value='#{user._id}')
+            button.btn.btn-primary(type='submit') Merge
+      
+
    
 block modals
 

@@ -1,9 +1,11 @@
 extends index
 //- better have that first line or none of this will work!
 
+   ***************************************************************************
    I have set this layout up so that you never need to do a "block appends"
    But, you do need to include each block, even if it is empty, so that you
-   don't load unecessary code (although it won't break anything)
+   don't load unecessary code from index (although it won't break anything)
+   ***************************************************************************
 
 block metas
    //- meta(name='description', content='This is an example description!')
@@ -22,6 +24,8 @@ block afterNav
    p Something awesome
 
 block modals
+   //- this is where you can add hidden divs and other elements that you'll want to display
+      dynamically on the page. 
 
 block pageScripts
    //- This is where any page specific scripts go   

@@ -111,13 +111,9 @@ module.exports = {
          */
 
          req.session.rpx = data.profile;
-         console.log('req session');
-         console.log(req.session);
                
          User.findOne({ 'socialProfiles.identifier' : data.profile.identifier}, function(err, doc) {
             if (err) { next(err); }
-            console.log('Existing User:');
-            console.log(doc);
             if (doc) {
                // User exists
                req.session.user = doc;
@@ -146,5 +142,4 @@ module.exports = {
          });
       });   
    }
-
 };
