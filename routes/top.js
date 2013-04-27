@@ -45,17 +45,26 @@ module.exports = {
 
    // app.get('/new')
    newest: function(req, res, next) {
-      res.end('Under Construction');
+      res.render('template.jade', {
+         title: 'Congrefs: Newest',
+         user: req.session.user
+      });   
    },
    
    // app.get('/top')
    top: function(req, res, next) {
-      res.end('Under Construction');
+      res.render('template.jade', {
+         title: 'Congrefs: top',
+         user: req.session.user
+      });   
    },
    
    // app.get('/add')
    add: function(req, res, next) {
-      res.end('Under Construction');
+      res.render('template.jade', {
+         title: 'Congrefs: Add',
+         user: req.session.user
+      });   
    },
    
    // app.get('/tos'...)

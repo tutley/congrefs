@@ -49,9 +49,11 @@ module.exports =  function(app){
 
    app.get('/account/view', restrict, user.viewAccount);
    app.post('/account/edit', restrict, user.editAccount);
-   app.get('/account/votes', restrict, user.viewVotes);
-   app.get('/account/comments', restrict, user.viewComments);
+   app.get('/account/votes', restrict, user.viewMyVotes);
+   app.get('/account/comments', restrict, user.viewMyComments);
 
    app.get('/:uid', user.viewProfile);
+   app.get('/:uid/votes', user.viewVotes);
+   app.get('/:uid/comments', user.viewComments);
 
 };

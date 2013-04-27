@@ -9,7 +9,55 @@ module.exports = {
     */
    // app.get('/:uid', user.viewProfile);
    viewProfile: function(req, res, next) {
-      res.end('Under Construction');
+      User.findOne({ '_id' : req.params.uid }, function(err, user) {
+         if (err) {next(err);}
+         if (user) {
+            res.render('template.jade', {
+               title: 'Congrefs: ' + user.displayName,
+               user: user,
+            });
+         } else {
+            res.render('template.jade', {
+               title: 'Congrefs: Error',
+            });
+         }
+      });
+   },
+
+   // app.get('/:uid/votes', user.viewVotes);
+   viewVotes: function(req, res, next) {
+      User.findOne({ '_id' : req.params.uid }, function(err, user) {
+         if (err) {next(err);}
+         if (user) {
+            // TODO: Find all Votes first, then render
+            res.render('template.jade', {
+               title: 'Congrefs: ' + user.displayName + ' - Voting Record',
+               user: user,
+            });
+         } else {
+            res.render('template.jade', {
+               title: 'Congrefs: Error',
+            });
+         }
+      });
+   },
+
+   // app.get('/:uid/comments', user.viewComments);
+   viewComments: function(req, res, next) {
+      User.findOne({ '_id' : req.params.uid }, function(err, user) {
+         if (err) {next(err);}
+         if (user) {
+            // TODO: Find all Comments first, then render
+            res.render('template.jade', {
+               title: 'Congrefs: ' + user.displayName + ' - Comments',
+               user: user,
+            });
+         } else {
+            res.render('template.jade', {
+               title: 'Congrefs: Error',
+            });
+         }
+      });
    },
 
          /** 
@@ -59,8 +107,7 @@ module.exports = {
    merge: function(req, res, next) {
       res.render('mergeAccounts.jade', {
          title: 'Merge this Login to your Congrefs Account',
-         user: req.session.user,
-         newSocial: req.session.rpx
+         user: req.session.user
       });
    },
    
@@ -106,7 +153,10 @@ module.exports = {
 
    // app.get('/register/district');
    district: function(req, res, next) {
-      res.end('Under Construction');
+      res.render('template.jade', {
+         title: 'Congrefs - Input Congressional District',
+         user: req.session.user
+      });   
    },
 
    /**
@@ -114,7 +164,10 @@ module.exports = {
     */
     // app.get('/account/view')
    viewAccount: function(req, res, next) {
-      res.end('Under Construction');
+      res.render('template.jade', {
+         title: 'Your Congrefs Account',
+         user: req.session.user
+      });   
    },
 
    // app.post('/account/edit')
@@ -123,12 +176,18 @@ module.exports = {
    },
 
    // app.get('/account/votes')
-   viewVotes: function(req, res, next) {
-      res.end('Under Construction');
+   viewMyVotes: function(req, res, next) {
+      res.render('template.jade', {
+         title: 'Your Congrefs Voting Record',
+         user: req.session.user
+      });   
    },
 
    // app.get('/account/comments')
-   viewComments: function(req, res, next) {
-      res.end('Under Construction');
+   viewMyComments: function(req, res, next) {
+      res.render('template.jade', {
+         title: 'Your Congrefs Comment History',
+         user: req.session.user
+      });   
    }
 };
