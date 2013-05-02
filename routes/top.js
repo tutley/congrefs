@@ -3,6 +3,7 @@ var janKey = process.env.JANKEY;
 var engageAPI = janrain(janKey);
 
 var User = require('../models/user');
+var Bill = require('../models/bill');
 
 /**
  * function loggedIn(user) {
@@ -33,6 +34,7 @@ module.exports = {
    login: function(req, res) {
       res.render('login.jade', {
          title: 'Congrefs Login'
+         , user: req.session.user
          , tokenUrl : 'http://'+req.get('host')+'/rpx'
       });
    },
@@ -59,18 +61,11 @@ module.exports = {
       });   
    },
    
-   // app.get('/add')
-   add: function(req, res, next) {
-      res.render('template.jade', {
-         title: 'Congrefs: Add',
-         user: req.session.user
-      });   
-   },
-   
    // app.get('/tos'...)
    tos: function(req, res) {
       res.render('tos.jade', {
          title: 'Congrefs Terms of Service'
+         , user: req.session.user
       });
    },
 
@@ -78,6 +73,7 @@ module.exports = {
    about: function(req, res) {
       res.render('about.jade', {
          title: 'About Congrefs'
+         , user: req.session.user
       });
    },
 
@@ -85,6 +81,7 @@ module.exports = {
    contact: function(req, res) {
       res.render('contact.jade', {
          title: 'Contact Congrefs'
+         , user: req.session.user
       });
    },
 

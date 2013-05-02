@@ -1,13 +1,13 @@
-/*
-User Schema
-
-This defines the data stored for each user. It contains basic user
-information, along with methods for passport authentication and
-password storage.
-
-This also includes the following references:
-
-*/
+/**
+ * User Schema
+ * 
+ * This defines the data stored for each user. It contains basic user
+ * information, along with methods for passport authentication and
+ * password storage.
+ * 
+ * This also includes the following references:
+ * 
+ */
 
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;

@@ -29,7 +29,6 @@ module.exports =  function(app){
    app.get('/logout', top.logout);
    app.get('/new', top.newest);
    app.get('/top', top.top);
-   app.get('/add', top.add);
    app.get('/about', top.about);
    app.get('/tos', top.tos);
    app.get('/contact', top.contact);
@@ -52,8 +51,18 @@ module.exports =  function(app){
    app.get('/account/votes', restrict, user.viewMyVotes);
    app.get('/account/comments', restrict, user.viewMyComments);
 
-   app.get('/:uid', user.viewProfile);
-   app.get('/:uid/votes', user.viewVotes);
-   app.get('/:uid/comments', user.viewComments);
+   app.get('/u/:uid', user.viewProfile);
+   app.get('/u/:uid/votes', user.viewVotes);
+   app.get('/u/:uid/comments', user.viewComments);
+
+   /**
+    * Bill Routes - Add bills, vote, leave comments, show bill information
+    * 
+    */
+   app.get('/add', bill.add);
+   app.get('/add/p/:page/:sort?', bill.addPagination);
+
+
+
 
 };

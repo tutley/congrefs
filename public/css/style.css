@@ -28,6 +28,7 @@ body {
 #push,
 #footer {
    height: 30px;
+   margin-top: 10px;
 }
 #footer {
    color: #ffffff;
