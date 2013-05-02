@@ -34,7 +34,7 @@ app.configure(function(){
    app.use(express.methodOverride());
    app.use(express.cookieSession({
       key: 'congrefs.sess',
-      secret: 'wethepeople'
+      secret: process.env.COOKIE_SECRET
    }));
    app.use(app.router);
    app.use(express.static(__dirname + '/public'));
