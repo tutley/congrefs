@@ -25,7 +25,8 @@ app.configure(function(){
    app.set('views', __dirname + '/views');
    app.set('view engine', 'jade');
    app.use(function(req, res, next) {
-     res.locals.current = req.path;
+     var current = req.path.split('/');
+     res.locals.current = '/' + current[1];
      next();
   });
    app.use(express.bodyParser());

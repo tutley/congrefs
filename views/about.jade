@@ -1,29 +1,28 @@
 extends index
-//- better have that first line or none of this will work!
-
-   ***************************************************************************
-   I have set this layout up so that you never need to do a "block appends"
-   But, you do need to include each block, even if it is empty, so that you
-   don't load unecessary code from index (although it won't break anything)
-   ***************************************************************************
 
 block metas
-   //- meta(name='description', content='This is an example description!')
-      Here you can dynamically control the meta tags for each page
-      This is especially useful for social networking sites like facebook that grab information
-      from these meta tags to determine how links to your site appear on their site
-
-      Keep in mind that index is providing these for each page already:
-      meta(name='viewport', content='width=device-width, initial-scale=1.0')
-      meta(name='title', content='#{title}')
-         
+   meta(name='description', content='Congrefs.com is a site where we the people can vote on legislation and provide our thoughts on each bill.')
 
 block afterNav
-   //- This is where the page content goes
-      Please remember that everything here is inside of a container-fluid
-      You should use row-fluid divs inside of here
-   h3 Under Construction
-   p Something awesome will be here soon!
+   h3 About Congrefs
+   p.
+      This site is under construction. The goal of this site is to provide a mechanism for
+       "We the People" to vote on legislation and provide feedback to the United States Congress.
+       We often see approval polls and other data associated with issues and wonder: "How
+       accurate is that, really?" Well, our goal is to increase the sample size and let the
+       voice of the people be heard!
+   p.
+      PS - The name "Congrefs" is a play on words with the old traditional spelling of "Congress" as
+       seen on the original text of the United States Constitution.
+   p
+      a(href='https://twitter.com/congrefs') Follow Congrefs on Twitter
+   p
+      a(href='https://github.com/tutley/congrefs') Follow Development on Github
+   p Thanks to Texas A&M University for their 
+      a(href='https://geoservices.tamu.edu/Services/Geocode/Default.aspx') Geolocation API!
+   p Thanks to the Sunlight Foundation for their 
+      a(href='http://sunlightlabs.github.io/congress/') Sunlight Congress API!
+
 
 block modals
    //- this is where you can add hidden divs and other elements that you'll want to display

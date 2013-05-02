@@ -15,7 +15,7 @@ function pagination(count, perPage, current) {
 
    // calculate a big navigation jump
    var scale = Math.floor(Math.log(totalPages)/Math.LN10);
-   var bigJump = 10 ^ scale;
+   var bigJump = Math.pow(10, scale);
 
    // This logic is probably not the best, but it's a first shot
    // at creating logical pagination links
@@ -27,6 +27,10 @@ function pagination(count, perPage, current) {
          pages.push({ 'number' : i , 'class' : klass });
       }
       if (totalPages > 8) {
+         var large = current + bigJump;
+         if (totalPages > large) {
+            pages.push({ 'number' : large, 'class' : '' });
+         }
          pages.push({ 'number' : '...', 'class' : 'disabled' });
          pages.push({'number' : totalPages , 'class' : ''});
       }
