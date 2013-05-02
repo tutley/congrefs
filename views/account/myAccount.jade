@@ -1,0 +1,42 @@
+extends ../index
+
+block metas
+   meta(name='description', content='This is the account management page for users of Congrefs.com')
+
+block afterNav
+   h3 View/Edit Your Account
+   div.row-fluid
+      div.well.span5
+         h4= user.displayName
+         dl.dl-horizontal
+            dt Email
+            dt State
+            dt District
+            dt Votes
+            dt Comments
+            dd= user.email
+            dd #{user.state}&nbsp;
+            dd #{user.district}&nbsp;
+            dd
+               a(href='/account/votes') View Your Votes
+            dd
+               a(href='/account/comments') View Your Comments
+         h4 Linked Social Networks
+         ul.media-list
+            each profile in user.socialProfiles
+               li.media
+                  a.pull-left(href='#{profile.url}')
+                     img.media-object(data-src='holder.js/64x64', src='#{profile.photo}', height='64', width='64')
+                  div.media-body
+                     h5.media-heading #{profile.providerName} Profile
+                     p Some stuff here, maybe a delete link or something
+         
+block modals
+   //- this is where you can add hidden divs and other elements that you'll want to display
+      dynamically on the page. 
+
+block pageScripts
+   //- This is where any page specific scripts go   
+      Keep in mind that these are included in every page already:
+      script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+      script(src='//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js')

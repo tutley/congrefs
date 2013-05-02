@@ -1,0 +1,50 @@
+extends ../index
+
+block metas
+   meta(name='description', content='Add bills that have been taken up by Congress to Congrefs.com')
+   
+block afterNav
+   h3 Add a Bill to Congrefs
+   div.row-fluid(id='billBody')
+      div.span4.input-append
+         div &nbsp;
+         form(id='search', action='/add/p/1/introduced_on', method='GET')
+            input(type='text', name='searchString', placeholder='Search', value='#{query}')
+            button.btn(type='submit') Go!
+      div.span8.pagination.pagination-right
+         ul
+            each page in pages
+               li(class='#{page.class}')
+                  if ( query != '')
+                     a(href='/add/p/#{page.number}/#{sort}/?searchString=#{query}') #{page.number}
+                  else
+                     a(href='/add/p/#{page.number}/#{sort}') #{page.number}
+
+      //- This is going to be the actual content
+      form(id='addBill', action='')
+         table.table.table-striped.table-hover.table-condensed
+            thead
+               tr
+                  th Bill
+                  th Introduced
+                  th Title
+                  th Link
+            tbody
+               each bill in bills.results
+                  tr
+                     td= bill.bill_type + '.' + bill.number
+                     td= bill.introduced_on
+                     td= bill.official_title.substring(0, 70)
+                     td
+                        a(href='#{bill.urls.congress}', target='_new') Congress
+
+
+block modals
+   //- this is where you can add hidden divs and other elements that you'll want to display
+      dynamically on the page. 
+
+block pageScripts
+   //- This is where any page specific scripts go   
+      Keep in mind that these are included in every page already:
+      script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+      script(src='//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js')
